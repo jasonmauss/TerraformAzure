@@ -1,2 +1,2 @@
-# TerraformLearning
- Repo used when reading Terraform Azure book and following along
+# Terraform on Azure
+ Repo used for Terraform Azure scripts
