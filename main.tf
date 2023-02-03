@@ -54,4 +54,5 @@ output resource_group_details {
 
 output storage_account_details {
     value = azurerm_storage_account.mystorage
+    sensitive = true
 }
