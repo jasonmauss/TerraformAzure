@@ -1,21 +1,3 @@
-terraform {
-    required_version = "~>v1.1.6"
-    required_providers {
-    azurerm = {
-      version = "~> 3.41.0"
-      source = "hashicorp/azurerm"
-    }
-  }
-}
-
-provider "azurerm" {
-  subscription_id = var.azure_subscription_id
-  tenant_id = var.azure_tenant_id
-  client_id = var.azure_client_id
-  client_secret = var.azure_client_secret
-  #displayName": "azure-cli-2023-02-02-23-00-31"
-    features {}
-}
 
 variable resource_group_name {
     type = string
@@ -38,6 +20,11 @@ variable location { type = string}
 resource "azurerm_resource_group" "myrg" {
   name     = var.resource_group_name
   location = var.resource_location
+}
+
+resource "azurerm_resource_group" "rgname" {
+  name = "testrgforstate"
+  location = "westus2"
 }
 
 resource "azurerm_resource_group" "remotestaterg" {
@@ -150,4 +137,8 @@ output resource_group_details {
 output storage_account_details {
     value = azurerm_storage_account.mystorage
     sensitive = true
+}
+
+output rgoutput {
+  value = azurerm_resource_group.rgname
 }
